@@ -12,7 +12,7 @@ This is an ongoing project for Brainhack School 2026, which I try to do time-fre
 - The dataset was downloaded from OpenNeuro ds006777[^3]. It is an EEG dataset collected by BioSemi system, and I would include TD and ASC participants in my analyses.
 - Participants did an audiovisual simple reaction-time task (AVSRT). The stimulus type consisted of visual stimulus alone, auditory stimulus alone, and combined audiovisual stimuli simultaneously. What participants should do was press the button as quickly as possible when they detected any stimulus.
 ## Data Analyses
-Preprocessing and time-frequency would be done through MNE-python 1.12.1 with libraries [PyPREP](https://pyprep.readthedocs.io/en/stable/index.html)[^7] to detect noisy channels and [autoreject](https://autoreject.github.io/stable/index.html)[^8] to reject bad epochs automatically. Specific processes would refer to Vanneau et al. (2025)[^4], Matyjek et al. (2025)[^5], and Gao et al. (2021)[^6].
+Preprocessing and time-frequency would be done through MNE-python 1.12.1[^7][^8] with libraries [PyPREP](https://pyprep.readthedocs.io/en/stable/index.html)[^9] to detect noisy channels and [autoreject](https://autoreject.github.io/stable/index.html)[^10] to reject bad epochs automatically. Specific processes would refer to Vanneau et al. (2025)[^4], Matyjek et al. (2025)[^5], and Gao et al. (2021)[^6].
 
 So far preprocessing scripts have been uploaded but still need time to modify.
 ## Something I Want to Discuss
@@ -24,5 +24,7 @@ So far preprocessing scripts have been uploaded but still need time to modify.
 [^4]: Vanneau, T., Foxe, J. J., Beker, S., & Molholm, S. (2025). Disrupted Top-Down Modulation as a Mechanism of Impaired Multisensory Processing in Children with an Autism Spectrum Diagnosis. bioRxiv, 2025-11.
 [^5]: Matyjek, M., Kita, S., Cuello, M.T., & Faraco, S.S. (2025), Multisensory Integration of Naturalistic Speech and Gestures in Autistic Adults. Autism Research, 18: 1156-1169.
 [^6]: Gao, C., Xie, W., Green, J. J., Wedell, D. H., Jia, X., Guo, C., & Shinkareva, S. V. (2021). Evoked and induced power oscillations linked to audiovisual integration of affect. Biological psychology, 158, 108006.
-[^7]: Bigdely-Shamlo, N., Mullen, T., Kothe, C., Su, K. M., & Robbins, K. A. (2015). The PREP pipeline: standardized preprocessing for large-scale EEG analysis. Frontiers in neuroinformatics, 9, 16.
-[^8]: Jas, M., Engemann, D. A., Bekhti, Y., Raimondo, F., & Gramfort, A. (2017). Autoreject: Automated artifact rejection for MEG and EEG data. NeuroImage, 159, 417-429.
+[^7]: Larson, E., Gramfort, A., Engemann, D. A., Leppakangas, J., Brodbeck, C., Jas, M., Brooks, T. L., Sassenhagen, J., McCloy, D., Luessi, M., King, J.-R., Höchenberger, R., Brunner, C., Goj, R., Favelier, G., van Vliet, M., Wronkiewicz, M., Appelhoff, S., Rockhill, A., … user27182. (2026). MNE-Python (v1.12.1). Zenodo. https://doi.org/10.5281/zenodo.19666955
+[^8]: Gramfort, A., Luessi, M., Larson, E., Engemann, D. A., Strohmeier, D., Brodbeck, C., ... & Hämäläinen, M. (2013). MEG and EEG data analysis with MNE-Python. Frontiers in Neuroinformatics, 7, 267.
+[^9]: Bigdely-Shamlo, N., Mullen, T., Kothe, C., Su, K. M., & Robbins, K. A. (2015). The PREP pipeline: standardized preprocessing for large-scale EEG analysis. Frontiers in neuroinformatics, 9, 16.
+[^10]: Jas, M., Engemann, D. A., Bekhti, Y., Raimondo, F., & Gramfort, A. (2017). Autoreject: Automated artifact rejection for MEG and EEG data. NeuroImage, 159, 417-429.
