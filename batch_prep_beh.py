@@ -27,6 +27,7 @@ subject_ids = sorted([os.path.basename(p) for p in subject_paths if os.path.isdi
 #subject_ids = ['sub-10025', 'sub-10036', 'sub-10129', 'sub-11038', 'sub-11049', 'sub-11053']
 
 print(f"List of subjects to be processed: {subject_ids}")
+print(f'Totally {len(subject_ids)} will be processed.')
 user_input = input("Are you ready to start processing these files? (y/n): ").strip().lower()
 #%%
 if user_input == 'y':
@@ -238,3 +239,6 @@ if user_input == 'y':
         print(f"The temporary memory for {subject_id} has been cleared.")
 
     print("\n==== Batch processing finished. ====")
+
+else:
+    print('Data processing is not permitted.')
