@@ -14,7 +14,7 @@ This is an ongoing project for Brainhack School 2026, which I try to do time-fre
 ## Data Analyses
 EEG preprocessing and time-frequency analysis would be done through MNE-Python 1.12.1[^7][^8] with a library [PyPREP](https://pyprep.readthedocs.io/en/stable/index.html)[^9] to detect noisy channels.
 ### How to run behavioral analysis and EEG preprocessing
-- Both `eeg_preprocessing_and_beh_analysis.ipynb` and `batch_prep_beh.py` can be used for analyzing behavioral responses and preprocessing EEG data. To run the code, you should modify `base_dir` to your project folder directory, and specify which subject you want to process in `subject_ids `.
+- Both `eeg_preprocessing_and_beh_analysis.ipynb` and `batch_prep_beh.py` can be used for analyzing behavioral responses and preprocessing EEG data. To run the code, you should modify `base_dir` to your project folder directory, and specify which subject you want to process in `subject_ids`.
 - After running all the code, the folder `derivatives` would be created, and a `sub-*_beh.csv` file for behavioral results, a preprocessed epoch `sub-*_eeg-epo.fif` file, and a log `sub-*_log.txt` file would be saved in each subject's folder.
 
 NOTE: Make sure you have also downloaded the `functions.py` file (which contains user-defined functions) and put all these scripts in the same folder.
