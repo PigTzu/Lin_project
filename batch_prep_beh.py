@@ -15,6 +15,12 @@ print('MNE version:',mne.__version__)
 base_dir = '/home/p2894/mne_eeg_workshop/ds006777'
 derivatives_dir = os.path.join(base_dir, 'derivatives')
 
+if not os.path.exists(derivatives_dir):
+    os.makedirs(derivatives_dir)
+    print(f"has successfully created: {derivatives_dir}")
+else:
+    print("Folder exists. No need to create.")
+
 subject_paths = glob.glob(os.path.join(base_dir, 'sub-*'))
 subject_ids = sorted([os.path.basename(p) for p in subject_paths if os.path.isdir(p)])
 
