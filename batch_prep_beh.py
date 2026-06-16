@@ -5,7 +5,6 @@ import pandas as pd
 import os
 import glob
 import gc
-from pyprep.find_noisy_channels import NoisyChannels
 from functions import mark_bad_channels
 
 print('The MNE-Python version in this script is 1.12.1. Please check whether your MNE version matches, and if is too old, then please modify the parameters based on official documentation.')
@@ -172,8 +171,6 @@ if user_input == 'y':
 
             # Behavioral analysis (hit rate)
             print('Analyzing behavioral responses (hit rate)...')
-            df_valid_rts = pd.DataFrame(valid_rt_data)
-
             av_good = len(np.where(events_news[:, 2] == 3)[0])
             av_bad  = len(np.where(events_news[:, 2] == 30)[0])
             av_total = av_good + av_bad
@@ -198,6 +195,8 @@ if user_input == 'y':
             }
             df_summary = pd.DataFrame(data)
             df_summary['Hit_Rate_Percent'] = (df_summary['Hit_Rate'] * 100).round(2).astype(str) + '%'
+            
+            df_valid_rts = pd.DataFrame(valid_rt_data)
             mean_rts = df_valid_rts.groupby('Stimulus_Type')['Reaction_Time'].mean()
             df_summary['Mean_RT_Secs'] = df_summary['Condition'].map(mean_rts)
             print('Behavioral analyses done.')
