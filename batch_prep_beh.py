@@ -71,10 +71,15 @@ if user_input == 'y':
             print('Marking bad channels...')
             bads = mark_bad_channels(raw)
             raw.info['bads'] = bads
-            print('Bad channels:',raw.info['bads'])
-            if len(raw.info['bads']) > len(raw.get_channel_types(picks=['eeg']))*0.15:
-                print('The data should be discarded.')
+            print('Bad channels:', raw.info['bads'])
             print('Bad channels have been marked.')
+
+            if len(raw.info['bads']) > len(raw.get_channel_types(picks=['eeg']))*0.15:
+                print('Too many bad channels. The data should be discarded.')
+                continue
+            if 'Fp1' in raw.info['bads'] or 'Fp2' in raw.info['bads']:
+                print(f"{subject_id}'s EOG-like channels (Fp1/Fp2) are damaged. Data processing for this subject is abandoned.")
+                continue
 
             print('Re-referencing...')
             raw_ref = raw.set_eeg_reference(ref_channels='average')
