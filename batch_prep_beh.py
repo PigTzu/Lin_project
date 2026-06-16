@@ -8,7 +8,8 @@ import gc
 from pyprep.find_noisy_channels import NoisyChannels
 from functions import mark_bad_channels
 
-print('MNE version:',mne.__version__)
+print('The MNE-Python version in this script is 1.12.1. Please check whether your MNE version matches, and if is too old, then please modify the parameters based on official documentation.')
+print('Your MNE version:',mne.__version__)
 
 #%%
 # To use the code, modify base_dir to your project folder path.
@@ -19,11 +20,10 @@ if not os.path.exists(derivatives_dir):
     os.makedirs(derivatives_dir)
     print(f"has successfully created: {derivatives_dir}")
 else:
-    print("Folder exists. No need to create.")
+    print("Folder derivatives exists. No need to create.")
 
 subject_paths = glob.glob(os.path.join(base_dir, 'sub-*'))
 subject_ids = sorted([os.path.basename(p) for p in subject_paths if os.path.isdir(p)])
-
 # Or you can manually specify which subject to be processed:
 #subject_ids = ['sub-10025', 'sub-10036', 'sub-10129', 'sub-11038', 'sub-11049', 'sub-11053']
 
@@ -48,12 +48,15 @@ if user_input == 'y':
                 print(f"Cannot find {subject_id} .bdf file. Skip.")
                 continue
             
+            print('Importing raw file...')
             raw = mne.io.read_raw_bdf(bdf_file_path, preload=True)
             print('Raw file imported.')
 
+            print('Looking for events...')
             events = mne.find_events(raw, shortest_event=1)
             print('Events found.')
 
+            print('Setting montage and channel types...')
             montage = mne.channels.make_standard_montage('biosemi64')
             raw = raw.set_montage(montage, on_missing='ignore')
             raw.set_channel_types({"EXG1":"emg"})
@@ -66,13 +69,15 @@ if user_input == 'y':
             raw.set_channel_types({"EXG8":"emg"})
             print('Montage and channel types have been set.')
 
+            print('Marking bad channels...')
             bads = mark_bad_channels(raw)
             raw.info['bads'] = bads
             print('Bad channels:',raw.info['bads'])
             if len(raw.info['bads']) > len(raw.get_channel_types(picks=['eeg']))*0.15:
                 print('The data should be discarded.')
-            print('Bad channels detection has been done.')
+            print('Bad channels have been marked.')
 
+            print('Re-referencing...')
             raw_ref = raw.set_eeg_reference(ref_channels='average')
             print('Average reference done.')
 
@@ -80,6 +85,7 @@ if user_input == 'y':
             raw_for_ica = raw_ref.copy()
             raw_for_analysis = raw_ref.copy()
 
+            print('ICA running...')
             # Preparation for ICA
             raw_for_ica = raw_for_ica.copy().filter(l_freq=1.0, h_freq=50.0)
 
@@ -102,10 +108,12 @@ if user_input == 'y':
             ica.apply(raw_for_analysis)
             print('ICA done.')
 
+            print('Filtering...')
             raw_for_analysis = raw_for_analysis.copy().filter(l_freq=0.05, h_freq=50)
-            print('Filtered the data.')
+            print('Data have been filtered.')
 
             # Rename events with bad responses & behavioral analysis (RT)
+            print('Analyzing behavioral responses (RT)...')
             sfreq = raw.info['sfreq']
 
             events_news = events.copy()
@@ -156,12 +164,14 @@ if user_input == 'y':
                         })
             
             # Epoching
+            print('Extracting epochs, ignoring poor behavioral responses with baseline correction and PTP rejection...')
             events_epochs = events_news[np.where((events_news[:,2]==3) | (events_news[:,2]==4) | (events_news[:,2]==5) | (events_news[:,2]==30) | (events_news[:,2]==40) | (events_news[:,2]==50))]
             event_id = {"AV": 3, "A": 4, "V": 5}
 
-            epochs = mne.Epochs(raw_for_analysis, events=events_epochs, event_id=event_id, tmin=-0.5, tmax=0.8, baseline=(-0.5, 0), reject=dict(eeg=200e-6), detrend=0, preload=True)
+            epochs = mne.Epochs(raw_for_analysis, events=events_epochs, event_id=event_id, tmin=-0.2, tmax=0.9, baseline=(-0.2, 0), reject=dict(eeg=200e-6), detrend=0, preload=True)
 
             # Behavioral analysis (hit rate)
+            print('Analyzing behavioral responses (hit rate)...')
             df_valid_rts = pd.DataFrame(valid_rt_data)
 
             av_good = len(np.where(events_news[:, 2] == 3)[0])
@@ -190,17 +200,21 @@ if user_input == 'y':
             df_summary['Hit_Rate_Percent'] = (df_summary['Hit_Rate'] * 100).round(2).astype(str) + '%'
             mean_rts = df_valid_rts.groupby('Stimulus_Type')['Reaction_Time'].mean()
             df_summary['Mean_RT_Secs'] = df_summary['Condition'].map(mean_rts)
+            print('Behavioral analyses done.')
 
             # Bad channels interpolation
+            print('Interpolating bad channels...')
             epochs = epochs.copy().interpolate_bads()
             print('Bad channels interpolated.')
 
             # Save files to derivatives
+            print('Saving files to derivatives...')
             beh_file_path = os.path.join(subject_folder, f'{subject_id}_beh.csv')
             df_summary.to_csv(beh_file_path, index=False)
 
             eeg_file_path = os.path.join(subject_folder, f'{subject_id}_eeg-epo.fif')
             epochs.save(eeg_file_path, overwrite=True)
+            print(f'Three files - {subject_id}_beh.csv, {subject_id}_eeg-epo.fif, & {subject_id}_log.txt have been saved.')
             
             print(f"{subject_id} has been processed and saved successfully!")
         
