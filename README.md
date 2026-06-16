@@ -12,12 +12,12 @@ This is an ongoing project for Brainhack School 2026, which I try to do time-fre
 - The dataset was downloaded from OpenNeuro ds006777[^3]. It is an EEG dataset collected by BioSemi system, and I would include TD and ASC participants in my analyses.
 - Participants did an audiovisual simple reaction-time task (AVSRT). The stimulus type consisted of visual stimulus alone, auditory stimulus alone, and combined audiovisual stimuli simultaneously. What participants should do was press the button as quickly as possible when they detected any stimulus.
 ## Data Analyses
-Preprocessing and time-frequency would be done through MNE-Python 1.12.1[^7][^8] with libraries [PyPREP](https://pyprep.readthedocs.io/en/stable/index.html)[^9] to detect noisy channels and [autoreject](https://autoreject.github.io/stable/index.html)[^10] to reject bad epochs automatically. Specific processes would refer to Vanneau et al. (2025)[^4], Matyjek et al. (2025)[^5], and Gao et al. (2021)[^6].
+EEG preprocessing and time-frequency analysis would be done through MNE-Python 1.12.1[^7][^8] with a library [PyPREP](https://pyprep.readthedocs.io/en/stable/index.html)[^9] to detect noisy channels.
+### How to run behavioral analysis and EEG preprocessing
+- Both `eeg_preprocessing_and_beh_analysis.ipynb` and `batch_prep_beh.py` can be used for analyzing behavioral responses and preprocessing EEG data. To run the code, you should modify `base_dir` to your project folder directory, and specify which subject you want to process in `subject_ids `.
+- After running all the code, the folder `derivatives` would be created, and a `sub-*_beh.csv` file for behavioral results, a preprocessed epoch `sub-*_eeg-epo.fif` file, and a log `sub-*_log.txt` file would be saved in each subject's folder.
 
-So far scripts for preprocessing and behavioral analysis have been uploaded but still need time to modify.
-## Something I Want to Discuss
-- Preprocessing steps are different between three studies investigating multisensory integration[^4][^5][^6], and I think some steps used in the [script](https://github.com/tvanneau/Cross-sensory-switching/blob/main/Preprocessing_AVSRT_Project.py) by Vanneau et al. (2025) would generate controversial issues. Hope to discuss this orally.
-- The number of participants in the two groups (TD vs. ASC) is different. How can I make sure SNR between groups are the same?
+NOTE: Make sure you have also downloaded the `functions.py` file (which contains user-defined functions) and put all these scripts in the same folder.
 [^1]: Matyjek, M., Kita, S., Torralba Cuello, M., & Soto Faraco, S. (2024). Multisensory integration of speech and gestures in a naturalistic paradigm. Human brain mapping, 45(11), e26797.
 [^2]: Senkowski, D., & Engel, A. K. (2024). Multi-timescale neural dynamics for multisensory integration. Nature Reviews Neuroscience, 25(9), 625-642.
 [^3]: Theo Vanneau, John J. Foxe, Shlomit Beker, Daniella Cohen, Albulena Sejdu, and Sophie Molholm (2025). SFARI AVSRT EEG. OpenNeuro. [Dataset] doi: doi:10.18112/openneuro.ds006777.v1.0.0
@@ -27,4 +27,3 @@ So far scripts for preprocessing and behavioral analysis have been uploaded but 
 [^7]: Larson, E., Gramfort, A., Engemann, D. A., Leppakangas, J., Brodbeck, C., Jas, M., Brooks, T. L., Sassenhagen, J., McCloy, D., Luessi, M., King, J.-R., Höchenberger, R., Brunner, C., Goj, R., Favelier, G., van Vliet, M., Wronkiewicz, M., Appelhoff, S., Rockhill, A., … user27182. (2026). MNE-Python (v1.12.1). Zenodo. https://doi.org/10.5281/zenodo.19666955
 [^8]: Gramfort, A., Luessi, M., Larson, E., Engemann, D. A., Strohmeier, D., Brodbeck, C., ... & Hämäläinen, M. (2013). MEG and EEG data analysis with MNE-Python. Frontiers in Neuroinformatics, 7, 267.
 [^9]: Bigdely-Shamlo, N., Mullen, T., Kothe, C., Su, K. M., & Robbins, K. A. (2015). The PREP pipeline: standardized preprocessing for large-scale EEG analysis. Frontiers in neuroinformatics, 9, 16.
-[^10]: Jas, M., Engemann, D. A., Bekhti, Y., Raimondo, F., & Gramfort, A. (2017). Autoreject: Automated artifact rejection for MEG and EEG data. NeuroImage, 159, 417-429.
