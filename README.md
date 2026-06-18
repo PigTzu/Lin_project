@@ -41,8 +41,6 @@ So far, three participants for each group (TD vs. ASC) have been analyzed, and s
   </tr>
 </table>
 
-![image](https://github.com/PigTzu/Lin_project/blob/main/figures/AV_ASC_TFR.png)![image](https://github.com/PigTzu/Lin_project/blob/main/figures/A_ASC_TFR.png)![image](https://github.com/PigTzu/Lin_project/blob/main/figures/V_ASC_TFR.png)
-![image](https://github.com/PigTzu/Lin_project/blob/main/figures/AV_TD_TFR.png)![image](https://github.com/PigTzu/Lin_project/blob/main/figures/A_TD_TFR.png)![image](https://github.com/PigTzu/Lin_project/blob/main/figures/V_TD_TFR.png)
 [^1]: Matyjek, M., Kita, S., Torralba Cuello, M., & Soto Faraco, S. (2024). Multisensory integration of speech and gestures in a naturalistic paradigm. Human brain mapping, 45(11), e26797.
 [^2]: Senkowski, D., & Engel, A. K. (2024). Multi-timescale neural dynamics for multisensory integration. Nature Reviews Neuroscience, 25(9), 625-642.
 [^3]: Theo Vanneau, John J. Foxe, Shlomit Beker, Daniella Cohen, Albulena Sejdu, and Sophie Molholm (2025). SFARI AVSRT EEG. OpenNeuro. [Dataset] doi: doi:10.18112/openneuro.ds006777.v1.0.0
