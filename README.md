@@ -27,6 +27,20 @@ EEG preprocessing and time-frequency analysis would be done through MNE-Python 1
 The script `time-frequency_analysis.ipynb` is still under development.
 ## Interim Results
 So far, three participants for each group (TD vs. ASC) have been analyzed, and six figures of time-frequency representation on three experimental conditions (AV, A, & V) for each group would be created like the followings:
+
+<table>
+  <tr>
+    <td><img src="figures/AV_ASC_TFR.png" width="33%"/></td>
+    <td><img src="figures/A_ASC_TFR.png" width="33%"/></td>
+    <td><img src="figures/V_ASC_TFR.png" width="33%"/></td>
+  </tr>
+  <tr>
+    <td><img src="figures/AV_TD_TFR.png" width="33%"/></td>
+    <td><img src="figures/A_TD_TFR.png" width="33%"/></td>
+    <td><img src="figures/V_TD_TFR.png" width="33%"/></td>
+  </tr>
+</table>
+
 ![image](https://github.com/PigTzu/Lin_project/blob/main/figures/AV_ASC_TFR.png)![image](https://github.com/PigTzu/Lin_project/blob/main/figures/A_ASC_TFR.png)![image](https://github.com/PigTzu/Lin_project/blob/main/figures/V_ASC_TFR.png)
 ![image](https://github.com/PigTzu/Lin_project/blob/main/figures/AV_TD_TFR.png)![image](https://github.com/PigTzu/Lin_project/blob/main/figures/A_TD_TFR.png)![image](https://github.com/PigTzu/Lin_project/blob/main/figures/V_TD_TFR.png)
 [^1]: Matyjek, M., Kita, S., Torralba Cuello, M., & Soto Faraco, S. (2024). Multisensory integration of speech and gestures in a naturalistic paradigm. Human brain mapping, 45(11), e26797.
