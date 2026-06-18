@@ -30,14 +30,14 @@ So far, three participants for each group (TD vs. ASC) have been analyzed, and s
 
 <table>
   <tr>
-    <td><img src="figures/AV_ASC_TFR.png" width="33%"/></td>
-    <td><img src="figures/A_ASC_TFR.png" width="33%"/></td>
-    <td><img src="figures/V_ASC_TFR.png" width="33%"/></td>
+    <td><img src="figures/AV_ASC_TFR.png" width="300"/></td>
+    <td><img src="figures/A_ASC_TFR.png" width="300"/></td>
+    <td><img src="figures/V_ASC_TFR.png" width="300"/></td>
   </tr>
   <tr>
-    <td><img src="figures/AV_TD_TFR.png" width="33%"/></td>
-    <td><img src="figures/A_TD_TFR.png" width="33%"/></td>
-    <td><img src="figures/V_TD_TFR.png" width="33%"/></td>
+    <td><img src="figures/AV_TD_TFR.png" width="300"/></td>
+    <td><img src="figures/A_TD_TFR.png" width="300"/></td>
+    <td><img src="figures/V_TD_TFR.png" width="300"/></td>
   </tr>
 </table>
 
