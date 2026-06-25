@@ -18,7 +18,7 @@ if not os.path.exists(derivatives_dir):
     os.makedirs(derivatives_dir)
     print(f"Has successfully created: {derivatives_dir}")
 else:
-    print("Folder derivatives exists. No need to create.")
+    print("Folder `derivatives` exists. No need to create.")
 
 subject_paths = glob.glob(os.path.join(base_dir, 'sub-*'))
 subject_ids = sorted([os.path.basename(p) for p in subject_paths if os.path.isdir(p)])
