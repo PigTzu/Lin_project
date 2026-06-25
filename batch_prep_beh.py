@@ -16,14 +16,14 @@ derivatives_dir = os.path.join(base_dir, 'derivatives')
 
 if not os.path.exists(derivatives_dir):
     os.makedirs(derivatives_dir)
-    print(f"has successfully created: {derivatives_dir}")
+    print(f"Has successfully created: {derivatives_dir}")
 else:
     print("Folder derivatives exists. No need to create.")
 
 subject_paths = glob.glob(os.path.join(base_dir, 'sub-*'))
 subject_ids = sorted([os.path.basename(p) for p in subject_paths if os.path.isdir(p)])
 # Or you can manually specify which subject to be processed:
-#subject_ids = ['sub-10025', 'sub-10036', 'sub-10129', 'sub-11038', 'sub-11049', 'sub-11053']
+#subject_ids = ['sub-2713']
 
 print(f"List of subjects to be processed: {subject_ids}")
 print(f'Totally {len(subject_ids)} will be processed.')
