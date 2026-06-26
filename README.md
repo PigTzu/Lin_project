@@ -13,12 +13,38 @@ This is an ongoing project for Brainhack School 2026, which I try to do time-fre
 - Participants did an audiovisual simple reaction-time task (AVSRT). The stimulus type consisted of visual (V) stimulus alone, auditory (A) stimulus alone, and combined audiovisual (AV) stimuli simultaneously. What participants should do was press the button as quickly as possible when they detected any stimulus.
 ## Data Analyses
 EEG preprocessing and time-frequency analysis would be done through MNE-Python 1.12.1[^7][^8] with a library [PyPREP](https://pyprep.readthedocs.io/en/stable/index.html)[^9] to detect noisy channels.
+
+It is recommended to create a folder named `code` in the project folder to store the scripts from this repository:
+```
+ds006777/                    
+├── code/
+│   ├── batch_prep_beh.py
+│   ├── eeg_preprocessing_and_beh.ipynb
+│   ├── time-frequency_analysis.ipynb
+│   ├── functions.py
+│   └── requirements.txt
+├── sub-1501/
+├── sub-1502/
+├── ...
+├── participants.tsv
+├── dataset_description.json
+└── ...
+```
 ### How to run behavioral analysis and EEG preprocessing
 - Both `eeg_preprocessing_and_beh_analysis.ipynb` and `batch_prep_beh.py` can be used for analyzing behavioral responses and preprocessing EEG data. To run the code, you should modify `base_dir` to your project folder directory.
 - For `eeg_preprocessing_and_beh_analysis.ipynb`, you should specify which ONE subject you want to process in `subject_id`.
 - For `batch_prep_beh.py`, you should specify which subject(s) to process in `subject_ids`. This script is mainly for processing multiple subjects without plotting functions.
-- After running all the code, a folder for one subject would be created in `derivatives`. You can see that a `sub-*_beh.csv` file for behavioral results, a preprocessed epoch `sub-*_eeg-epo.fif` file, and a log `sub-*_log.txt` file would be saved in each subject's folder.
-
+- After running all the code, a folder for one subject would be created in `derivatives`. You can see that a `sub-*_beh.csv` file for behavioral results, a preprocessed epoch `sub-*_eeg-epo.fif` file, and a log `sub-*_log.txt` file would be saved in each subject's folder:
+```
+ds006777/                    
+├── code/
+├── derivatives/           
+│   ├── sub-10025/              
+│   │   ├── sub-10025_beh.csv   
+│   │   ├── sub-10025_eeg-epo.fif
+│   │   └── sub-10025_log.txt
+│   └── .../
+```
 **NOTE** 
 - Make sure you have also downloaded the `functions.py` file (which contains user-defined functions) and put all these scripts in the same folder.
 - The main differences between `eeg_preprocessing_and_beh_analysis.ipynb` and `batch_prep_beh.py` are that the former is mainly for processing one subject in which plotting functions could be used and code can be run cell by cell; the latter can be directly run in the terminal and is mainly for automatic batch processing for multiple subjects at once, so no plottings would be shown when running the script. 
@@ -43,8 +69,28 @@ In my project, `sub-2713` and `sub-11976` were renamed.
 - The script `time-frequency_analysis.ipynb` should be used. As mentioned in the previous section, you also need to specify the project folder path in `base_dir`. 
 - While running the "Sep up" section, a new folder `results` under `derivatives` will be created to store the grand-averaged output. It will also initialize a log file (`TFR_topomap_log.txt`) via MNE to keep track of the process.
 - While running `compute_grand_tfr()`, the time-frequency-resolved power estimates for each subject at one condition will be calculated and saved to the corresbonding subject folder under `derivatives` (e.g. `sub-10025_cond-V_eeg-tfr.h5`).
-- After running all the cells, you will get six grand-averaged TFR files (e.g., `grand_AV_TD-tfr.h5`) stored in the `results` folder, topographic maps across five frequency bands for both group separately, and plottings of time-frequency representations across three experimental conditions. (Compare and check your results with mine below!)
-
+- After running all the cells, you will get six grand-averaged TFR files (e.g., `grand_AV_TD-tfr.h5`) stored in the `results` folder, topographic maps across five frequency bands for both group separately, and plottings of time-frequency representations across three experimental conditions.
+```
+ds006777/
+├── code/                       
+├── derivatives/            
+│   ├── results/                
+│   │   ├── grand_A_ASC-tfr.h5
+│   │   ├── grand_A_TD-tfr.h5
+│   │   ├── grand_AV_ASC-tfr.h5
+│   │   ├── grand_AV_TD-tfr.h5
+│   │   ├── grand_V_ASC-tfr.h5
+│   │   ├── grand_V_TD-tfr.h5
+│   │   └── TFR_topomap_log.txt  
+│   ├── sub-10025/              
+│   │   ├── sub-10025_beh.csv    
+│   │   ├── sub-10025_cond-A_eeg-tfr.h5    
+│   │   ├── sub-10025_cond-AV_eeg-tfr.h5     
+│   │   ├── sub-10025_cond-V_eeg-tfr.h5   
+│   │   ├── sub-10025_eeg-epo.fif 
+│   │   └── sub-10025_log.txt  
+│   └── .../      
+```
 **NOTE**
 - Subjects without valid epoch files (due to noise exclusion during preprocessing) will log a failure message and be skipped safely (e.g., `sub-10129`, `sub-10170`, etc.), so no worries about the logging.
 - Since the user-defined function `compute_grand_tfr()` takes several minutes (approx. 6.5 mins for TD, 11 mins for ASC), the grand-averaged TFR results are exported into the `results` folder as `-tfr.h5` files (e.g., `grand_AV_TD-tfr.h5`) for future instant loading. Therefore you don't need to run those cells to get the time-frequency-resolved power estimates everytime you open the notebook, and just load the stored TFR files via `mne.time_frequency.read_tfrs()`!
