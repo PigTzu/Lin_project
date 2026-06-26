@@ -1,7 +1,6 @@
 import os
 import mne
 import gc
-import shutil
 from pyprep.find_noisy_channels import NoisyChannels
 
 def mark_bad_channels(raw):
