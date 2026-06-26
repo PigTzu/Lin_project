@@ -1,10 +1,10 @@
 # Multi-timescale Neural Dynamics for Multisensory Integration in Autism Spectrum Condition
-This is an ongoing project for Brainhack School 2026, which I try to do time-frequency analysis using MNE-Python. Dataset from [OpenNeuro ds006777](https://openneuro.org/datasets/ds006777/versions/1.0.0) would be used, and the entire processing/analyzing workflow and scripts will be updated.
+This is an ongoing and learning project for Brainhack School 2026, which I try to do time-frequency analysis using MNE-Python. Dataset from [OpenNeuro ds006777](https://openneuro.org/datasets/ds006777/versions/1.0.0) was used, and the entire processing/analyzing workflow and scripts will be updated gradually.
 ## Background
 - Our responses to multisensory stimuli typically differ from the combined responses of the corresponding unisensory stimuli. These integration effects are categorized as supra-additive (where the multisensory response exceeds the sum of unimodal responses) or sub-additive (where the combined effect is smaller).
 - Larger alpha suppression serves as a marker for increased integration of information, indexing heightened integration load. This multisensory integration (MSI) effect extends beyond a mere summation of unimodal power responses alone[^1][^10].
 - Different timescales, reflected in different oscillatory frequency bands, serve to route different information types through cortical networks[^2].
-- Individuals with autism spectrum condition (ASC) exhibit an altered temporal window for MSI.; however few studies investigated MSI on this population through a multi-timescale approach.
+- Individuals with autism spectrum condition (ASC) exhibit an altered temporal window for MSI; however few studies investigated MSI on this population through a multi-timescale approach.
 ## Research Aims
 - Comparing the MSI effects (indexed by alpha suppression) between ASC and TD groups.
 - Exploring the MSI effects across different frequency bands spatially and temporally.
