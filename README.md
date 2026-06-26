@@ -2,7 +2,7 @@
 This is an ongoing project for Brainhack School 2026, which I try to do time-frequency analysis using MNE-Python. Dataset from [OpenNeuro ds006777](https://openneuro.org/datasets/ds006777/versions/1.0.0) would be used, and the entire processing/analyzing workflow and scripts will be updated.
 ## Background
 - Our responses to multisensory stimuli typically differ from the combined responses of the corresponding unisensory stimuli. These integration effects are categorized as supra-additive (where the multisensory response exceeds the sum of unimodal responses) or sub-additive (where the combined effect is smaller).
-- Larger alpha suppression serves as a marker for increased integration of information, indexing heightened integration load. This multisensory integration (MSI) effect extends beyond a mere summation of unimodal power responses alone[^1].
+- Larger alpha suppression serves as a marker for increased integration of information, indexing heightened integration load. This multisensory integration (MSI) effect extends beyond a mere summation of unimodal power responses alone[^1][^10].
 - Different timescales, reflected in different oscillatory frequency bands, serve to route different information types through cortical networks[^2].
 - Individuals with autism spectrum condition (ASC) exhibit an altered temporal window for MSI.; however few studies investigated MSI on this population through a multi-timescale approach.
 ## Research Aims
@@ -110,3 +110,4 @@ A total of 22 TD and 38 ASC participants were analyzed. The figures below displa
 [^7]: Larson, E., Gramfort, A., Engemann, D. A., Leppakangas, J., Brodbeck, C., Jas, M., Brooks, T. L., Sassenhagen, J., McCloy, D., Luessi, M., King, J.-R., Höchenberger, R., Brunner, C., Goj, R., Favelier, G., van Vliet, M., Wronkiewicz, M., Appelhoff, S., Rockhill, A., … user27182. (2026). MNE-Python (v1.12.1). Zenodo. https://doi.org/10.5281/zenodo.19666955
 [^8]: Gramfort, A., Luessi, M., Larson, E., Engemann, D. A., Strohmeier, D., Brodbeck, C., ... & Hämäläinen, M. (2013). MEG and EEG data analysis with MNE-Python. Frontiers in Neuroinformatics, 7, 267.
 [^9]: Bigdely-Shamlo, N., Mullen, T., Kothe, C., Su, K. M., & Robbins, K. A. (2015). The PREP pipeline: standardized preprocessing for large-scale EEG analysis. Frontiers in neuroinformatics, 9, 16.
+[^10]: Matyjek, M., Kita, S., Cuello, M. T., & Faraco, S. S. (2025). Multisensory integration of naturalistic speech and gestures in autistic adults. Autism Research, 18(6), 1156-1169.
