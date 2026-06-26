@@ -25,21 +25,8 @@ EEG preprocessing and time-frequency analysis would be done through MNE-Python 1
 - The script was developed under Linux (specifically, Windows Subsystem for Linux, WSL). To see interactive plottings, for Linux/WSL you can install a matplotlib backend Qt by running `pip install pyqt6` in the terminal. For other operating systems, you can refer to [MNE official website](https://mne.tools/stable/install/advanced.html) for more details.
 ### Time-frequency analysis
 The script `time-frequency_analysis.ipynb` is still under development.
-## Interim Results
-So far, three participants for each group (TD vs. ASC) have been analyzed, and six figures of time-frequency representation on three experimental conditions (AV, A, & V) for each group would be created like the followings:
-
-<table>
-  <tr>
-    <td><img src="figures/AV_ASC_TFR.png" width="300"/></td>
-    <td><img src="figures/A_ASC_TFR.png" width="300"/></td>
-    <td><img src="figures/V_ASC_TFR.png" width="300"/></td>
-  </tr>
-  <tr>
-    <td><img src="figures/AV_TD_TFR.png" width="300"/></td>
-    <td><img src="figures/A_TD_TFR.png" width="300"/></td>
-    <td><img src="figures/V_TD_TFR.png" width="300"/></td>
-  </tr>
-</table>
+## Results
+So far, 22 TD and 38 ASC particiapnts have been analyzed, and six figures of time-frequency representation on three experimental conditions (AV, A, & V) for each group were created.
 
 [^1]: Matyjek, M., Kita, S., Torralba Cuello, M., & Soto Faraco, S. (2024). Multisensory integration of speech and gestures in a naturalistic paradigm. Human brain mapping, 45(11), e26797.
 [^2]: Senkowski, D., & Engel, A. K. (2024). Multi-timescale neural dynamics for multisensory integration. Nature Reviews Neuroscience, 25(9), 625-642.
