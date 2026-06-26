@@ -1,16 +1,16 @@
 # Multi-timescale Neural Dynamics for Multisensory Integration in Autism Spectrum Condition
 This is an ongoing project for Brainhack School 2026, which I try to do time-frequency analysis using MNE-Python. Dataset from [OpenNeuro ds006777](https://openneuro.org/datasets/ds006777/versions/1.0.0) would be used, and the entire processing/analyzing workflow and scripts will be updated.
 ## Background
-- Our responses to multisensory stimuli typically differ from the combined responses of the corresponding unisensory stimuli. We have supra-additive responses which means the effect of multisensory integration is larger than combined unimodal responses; the other one is sub-additive responses, meaning that the effect of multisensory integration is smaller than the combined unimodal effects.
+- Our responses to multisensory stimuli typically differ from the combined responses of the corresponding unisensory stimuli. These integration effects are categorized as supra-additive (where the multisensory response exceeds the sum of unimodal responses) or sub-additive (where the combined effect is smaller).
 - Larger alpha suppression serves as a marker for increased integration of information, indexing heightened integration load. This multisensory integration (MSI) effect went beyond a mere summation of unimodal power responses alone[^1].
 - Different timescales, reflected in different oscillatory frequency bands, serve to route different information types through cortical networks[^2].
-- Individuals with autism spectrum condition (ASC) has altered MSI time window; however few studies investigated MSI on this population through a multi-timescale approach.
+- Individuals with autism spectrum condition (ASC) exhibit an altered temporal window for MSI.; however few studies investigated MSI on this population through a multi-timescale approach.
 ## Research Aims
-- Comparing the MSI effects (measured with alpha suppression) between ASC and TD groups.
+- Comparing the MSI effects (indexed by alpha suppression) between ASC and TD groups.
 - Exploring the MSI effects across different frequency bands spatially and temporally.
 ## Dataset Description
-- The dataset was downloaded from OpenNeuro ds006777[^3]. It is an EEG dataset collected by BioSemi system, and I would include TD and ASC participants in my analyses.
-- Participants did an audiovisual simple reaction-time task (AVSRT). The stimulus type consisted of visual (V) stimulus alone, auditory (A) stimulus alone, and combined audiovisual (AV) stimuli simultaneously. What participants should do was press the button as quickly as possible when they detected any stimulus.
+- The dataset is sourced from OpenNeuro ds006777[^3], containing EEG data collected via a BioSemi system from both TD and ASC participants.
+- Participants performed an audiovisual simple reaction-time task (AVSRT), consisting of three randomized trial types: visual-only (V), auditory-only (A), and simultaneous audiovisual (AV). Participants were instructed to press a response button as rapidly as possible upon detecting any stimulus.
 ## Data Analyses
 EEG preprocessing and time-frequency analysis would be done through MNE-Python 1.12.1[^7][^8] with a library [PyPREP](https://pyprep.readthedocs.io/en/stable/index.html)[^9] to detect noisy channels.
 
@@ -31,7 +31,7 @@ ds006777/
 └── ...
 ```
 ### How to run behavioral analysis and EEG preprocessing
-- Both `eeg_preprocessing_and_beh_analysis.ipynb` and `batch_prep_beh.py` can be used for analyzing behavioral responses and preprocessing EEG data. To run the code, you should modify `base_dir` to your project folder directory.
+- Both `eeg_preprocessing_and_beh_analysis.ipynb` and `batch_prep_beh.py` can be used for analyzing behavioral responses and preprocessing EEG data. Prior to execution, update the `base_dir` variable in the scripts to point to your local project directory.
 - For `eeg_preprocessing_and_beh_analysis.ipynb`, you should specify which ONE subject you want to process in `subject_id`.
 - For `batch_prep_beh.py`, you should specify which subject(s) to process in `subject_ids`. This script is mainly for processing multiple subjects without plotting functions.
 - After running all the code, a folder for one subject would be created in `derivatives`. You can see that a `sub-*_beh.csv` file for behavioral results, a preprocessed epoch `sub-*_eeg-epo.fif` file, and a log `sub-*_log.txt` file would be saved in each subject's folder:
@@ -64,7 +64,7 @@ To complete the processes successfully, some subject folder names and correspond
   ```
 This naming convention prevents the analysis scripts from processing the excluded participant, and could include all the participants with the correct number.
 
-In my project, `sub-2713` and `sub-11976` were renamed.
+For the current implementation, folders and files of `sub-2713` and `sub-11976` have been renamed.
 #### Computing and plotting time-frequency representations (TFR)
 - The script `time-frequency_analysis.ipynb` should be used. As mentioned in the previous section, you also need to specify the project folder path in `base_dir`. 
 - While running the "Sep up" section, a new folder `results` under `derivatives` will be created to store the grand-averaged output. It will also initialize a log file (`TFR_topomap_log.txt`) via MNE to keep track of the process.
