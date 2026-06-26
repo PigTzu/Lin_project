@@ -27,7 +27,7 @@ EEG preprocessing and time-frequency analysis would be done through MNE-Python 1
 The script `time-frequency_analysis.ipynb` is still under development.
 ## Results
 So far, 22 TD and 38 ASC particiapnts have been analyzed, and six figures of time-frequency representation on three experimental conditions (AV, A, & V) for each group were created.
-
+![](https://github.com/PigTzu/Lin_project/blob/main/figures/TFR_2*3.png)
 [^1]: Matyjek, M., Kita, S., Torralba Cuello, M., & Soto Faraco, S. (2024). Multisensory integration of speech and gestures in a naturalistic paradigm. Human brain mapping, 45(11), e26797.
 [^2]: Senkowski, D., & Engel, A. K. (2024). Multi-timescale neural dynamics for multisensory integration. Nature Reviews Neuroscience, 25(9), 625-642.
 [^3]: Theo Vanneau, John J. Foxe, Shlomit Beker, Daniella Cohen, Albulena Sejdu, and Sophie Molholm (2025). SFARI AVSRT EEG. OpenNeuro. [Dataset] doi: doi:10.18112/openneuro.ds006777.v1.0.0
