@@ -25,7 +25,11 @@ EEG preprocessing and time-frequency analysis would be done through MNE-Python 1
 - The script was developed under Linux (specifically, Windows Subsystem for Linux, WSL). To see interactive plottings, for Linux/WSL you can install a matplotlib backend Qt by running `pip install pyqt6` in the terminal. For other operating systems, you can refer to [MNE official website](https://mne.tools/stable/install/advanced.html) for more details.
 ### How to run time-frequency analysis
 #### Renaming some folders and files
-Before getting into time-frequency analysis formerly, we need to notice the project structure and naming convention. Subject folders with IDs beginning with `sub-10XXX` correspond to the TD group, whereas those beginning with `sub-11XXX` correspond to the ASC group. The analysis script uses these naming conventions to identify group membership automatically, and to complete the processes successfully, some subject folder names and corresponding preprocessed file (`-epo.fif`) names need to be changed in `derivatives`:
+Before getting into time-frequency analysis formerly, we need to notice the project structure and naming convention. 
+
+Subject folders with IDs beginning with `sub-10XXX` correspond to the TD group, whereas those beginning with `sub-11XXX` correspond to the ASC group. The analysis script uses these naming conventions to identify group membership automatically.
+
+To complete the processes successfully, some subject folder names and corresponding preprocessed file (`-epo.fif`) names need to be changed in `derivatives`:
   - One ASC participant is stored under the folder name `sub-2713`. To ensure that the analysis scripts recognize this participant as belonging to the ASC group, rename both the subject folder (in `derivatives`) and the corresponding `.epo` file to `sub-112713`.
   - Participants who should be excluded from the analysis (e.g., due to poor behavioral performance) should be renamed by adding an `e` after `sub-`(also in `derivatives`), like:
   ```
@@ -35,14 +39,15 @@ Before getting into time-frequency analysis formerly, we need to notice the proj
 This naming convention prevents the analysis scripts from processing the excluded participant, and could include all the participants with the correct number.
 
 In my project, `sub-2713` and `sub-11976` were renamed.
-#### Computing and plotting time-frequency representations
+#### Computing and plotting time-frequency representations (TFR)
 - The script `time-frequency_analysis.ipynb` should be used. As mentioned in the previous section, you also need to specify the project folder path in `base_dir`. 
-While running the "Sep up" section, a new folder `results` under `derivatives` will be created to store the grand-averaged output. It will also initialize a log file (`TFR_topomap_log.txt`) via MNE to keep track of the process.
+- While running the "Sep up" section, a new folder `results` under `derivatives` will be created to store the grand-averaged output. It will also initialize a log file (`TFR_topomap_log.txt`) via MNE to keep track of the process.
 - While running `compute_grand_tfr()`, the time-frequency-resolved power estimates for each subject at one condition will be calculated and saved to the corresbonding subject folder under `derivatives` (e.g. `sub-10025_cond-V_eeg-tfr.h5`).
-- After running all the cells, you will get six grand-averaged tfr files (e.g., `grand_AV_TD-tfr.h5`) stored in the `results` folder, topographic maps across five frequency bands for both group separately, and plottings of time-frequency representations across three experimental conditions. (Compare and check your results with mine below!)
+- After running all the cells, you will get six grand-averaged TFR files (e.g., `grand_AV_TD-tfr.h5`) stored in the `results` folder, topographic maps across five frequency bands for both group separately, and plottings of time-frequency representations across three experimental conditions. (Compare and check your results with mine below!)
+
 **NOTE**
-- Subjects without valid epoch files (due to noise exclusion during preprocessing) will log a failure message and be skipped safely (e.g., `sub-10129`, `sub-10170`, etc.).
-- Since the user-defined function `compute_grand_tfr()` takes several minutes (approx. 6.5 mins for TD, 11 mins for ASC), the grand-averaged power results are exported into the `results` folder as `-tfr.h5` files (e.g., `grand_AV_TD-tfr.h5`) for future instant loading (via `mne.time_frequency.read_tfrs()`). Therefore you don't need to run those cells to get the time-frequency-resolved power estimates everytime you open the notebook.
+- Subjects without valid epoch files (due to noise exclusion during preprocessing) will log a failure message and be skipped safely (e.g., `sub-10129`, `sub-10170`, etc.), so no worries about the logging.
+- Since the user-defined function `compute_grand_tfr()` takes several minutes (approx. 6.5 mins for TD, 11 mins for ASC), the grand-averaged TFR results are exported into the `results` folder as `-tfr.h5` files (e.g., `grand_AV_TD-tfr.h5`) for future instant loading. Therefore you don't need to run those cells to get the time-frequency-resolved power estimates everytime you open the notebook, and just load the stored TFR files via `mne.time_frequency.read_tfrs()`!
 ## Results
 22 TD and 38 ASC particiapnts have been analyzed. The followings show the topographic maps across five frequency bands for ASC and TD groups respectively, and the time-frequency representations across three experimental conditions (AV, A, V) for both groups.
 ### Topographic maps for cross-modal conditions
